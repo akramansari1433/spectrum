@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/spectrum/static/css/main.9109e493.chunk.css",
+    "main.js": "/spectrum/static/js/main.afc96c1e.chunk.js",
+    "main.js.map": "/spectrum/static/js/main.afc96c1e.chunk.js.map",
+    "runtime-main.js": "/spectrum/static/js/runtime-main.bc352882.js",
+    "runtime-main.js.map": "/spectrum/static/js/runtime-main.bc352882.js.map",
+    "static/css/2.7b1a5bd5.chunk.css": "/spectrum/static/css/2.7b1a5bd5.chunk.css",
+    "static/js/2.16eae0ec.chunk.js": "/spectrum/static/js/2.16eae0ec.chunk.js",
+    "static/js/2.16eae0ec.chunk.js.map": "/spectrum/static/js/2.16eae0ec.chunk.js.map",
+    "index.html": "/spectrum/index.html",
+    "static/css/2.7b1a5bd5.chunk.css.map": "/spectrum/static/css/2.7b1a5bd5.chunk.css.map",
+    "static/css/main.9109e493.chunk.css.map": "/spectrum/static/css/main.9109e493.chunk.css.map",
+    "static/js/2.16eae0ec.chunk.js.LICENSE.txt": "/spectrum/static/js/2.16eae0ec.chunk.js.LICENSE.txt",
+    "static/media/1.a7617e10.JPG": "/spectrum/static/media/1.a7617e10.JPG",
+    "static/media/2.523572f1.JPG": "/spectrum/static/media/2.523572f1.JPG",
+    "static/media/3.f44ea966.JPG": "/spectrum/static/media/3.f44ea966.JPG",
+    "static/media/bootstrap-icons.css": "/spectrum/static/media/bootstrap-icons.dfd0ea12.woff2",
+    "static/media/logo.1d69b73a.png": "/spectrum/static/media/logo.1d69b73a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bc352882.js",
+    "static/css/2.7b1a5bd5.chunk.css",
+    "static/js/2.16eae0ec.chunk.js",
+    "static/css/main.9109e493.chunk.css",
+    "static/js/main.afc96c1e.chunk.js"
+  ]
+}
