@@ -10,10 +10,10 @@ function App() {
     <Router>
       <Navbar/>
       <Switch>
-          <Route exact path='/'>
+          <Route exact path="/spectrum">
             <Cover/>
           </Route>
-          <Route path='/albums'>
+          <Route path="/albums">
             <Albums/>
           </Route>
       </Switch>

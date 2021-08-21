@@ -24,7 +24,7 @@ function Navbar() {
             <div className="collapse navbar-collapse text-center" id="navbarTogglerDemo03">
                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li className="nav-item active">
-                        <Link className="nav-link text-white" to="/">Home </Link>
+                        <Link className="nav-link text-white" to="/spectrum">Home </Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link text-white" to="/albums">Albums</Link>
