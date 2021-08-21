@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.png'
+import {Link} from 'react-router-dom'
 
 
 
@@ -23,16 +24,16 @@ function Navbar() {
             <div className="collapse navbar-collapse text-center" id="navbarTogglerDemo03">
                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li className="nav-item active">
-                        <a className="nav-link text-white" href="#wfwf">Home </a>
+                        <Link className="nav-link text-white" to="/">Home </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#jhgdhsd">Albums</a>
+                        <Link className="nav-link text-white" to="/albums">Albums</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#wfdwqf">About Us</a>
+                        <Link className="nav-link text-white" to="/about">About Us</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#wfdwqf">Contact</a>
+                        <Link className="nav-link text-white" to="/contact">Contact</Link>
                     </li>
                 </ul>
             </div>
