@@ -9,7 +9,7 @@ function Navbar() {
         <div>
         <nav className="navbar  navbar-light bg-dark d-flex flex-row-reverse">
             <button 
-                className="navbar-toggler text-left" 
+                className="navbar-toggler" 
                 type="button" 
                 data-toggle="collapse" 
                 data-target="#navbarTogglerDemo03" 
