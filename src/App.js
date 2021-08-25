@@ -5,6 +5,7 @@ import Cover from './components/Cover/Cover'
 import Footer from './components/Footer/Footer';
 import Portfolio from './components/Portfolio/Porfolio';
 import About from './components/About/About'
+import Wedding from './components/Wedding/Wedding'
 
 function App() {
   return (
@@ -17,8 +18,11 @@ function App() {
           <Route path="/spectrum">
             <Cover/>
           </Route>
-          <Route path="/porfolio">
+          <Route path="/portfolio">
             <Portfolio/>
+          </Route>
+          <Route path="/porfolio/wedding">
+            <Wedding/>
           </Route>
           <Route path="/about">
             <About/>
