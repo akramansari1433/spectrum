@@ -3,7 +3,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Cover from './components/Cover/Cover'
 import Footer from './components/Footer/Footer';
-import Albums from './components/Albums/Albums'
+import Portfolio from './components/Portfolio/Porfolio';
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
           <Route path="/spectrum">
             <Cover/>
           </Route>
-          <Route path="/albums">
-            <Albums/>
+          <Route path="/porfolio">
+            <Portfolio/>
           </Route>
       </Switch>
       <Footer/>
