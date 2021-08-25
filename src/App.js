@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import Cover from './components/Cover/Cover'
 import Footer from './components/Footer/Footer';
 import Portfolio from './components/Portfolio/Porfolio';
+import About from './components/About/About'
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route path="/porfolio">
             <Portfolio/>
+          </Route>
+          <Route path="/about">
+            <About/>
           </Route>
       </Switch>
       <Footer/>
