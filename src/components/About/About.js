@@ -5,12 +5,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function About() {
     return (
         <div>
-            <div className="container p-3">
+            <div className="container p-5">
                 <div className="row text-center">
-                    <div className="col-12 col-md-6 col-sm-12 p-4">
+                    <div className="col-12 col-md-6 col-sm-12">
                         <img src={founder} alt="founder" className="rounded-circle w-50"/>
                     </div>
-                    <div className="col-12 col-md-6 col-sm-12 my-5 px-4">
+                    <div className="col-12 col-md-6 col-sm-12 my-5 py-sm-0 px-4">
                         <h1>Vishwesh Dhanadhare</h1>
                         <h5>Founder & Chief Photoghrapher</h5>
                     </div>
@@ -22,19 +22,19 @@ function About() {
             <h2 className="text-center mt-5">Co-Founders</h2>
             <div className="p-3 d-flex flex-wrap justify-content-center">
                 
-                <div className="m-3 mx-5" style={{width: '12rem'}}>
-                    <img className="card-img-top rounded-circle" src={founder} alt="#Card"/>
+                <div className="m-3 mx-5" style={{width: '10rem'}}>
+                    <img className="card-img-top rounded-circle " src={founder} alt="#Card"/>
                     <div className="card-body text-center">
                         <h5 className="card-title">Ashlesha</h5>
                     </div>
                 </div>
-                <div className="m-3 mx-5" style={{width: '12rem'}}>
+                <div className="m-3 mx-5" style={{width: '10rem'}}>
                     <img className="card-img-top rounded-circle" src={founder}alt="#Card"/>
                     <div className="card-body text-center">
                         <h5 className="card-title">Buneshwar</h5>
                     </div>
                 </div>
-                <div className="m-3 mx-5" style={{width: '12rem'}}>
+                <div className="m-3 mx-5" style={{width: '10rem'}}>
                     <img className="card-img-top rounded-circle" src={founder} alt="#Card"/>
                     <div className="card-body text-center">
                         <h5 className="card-title">Rushikesh</h5>
