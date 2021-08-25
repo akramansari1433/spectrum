@@ -5,12 +5,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function About() {
     return (
         <div>
-            <div className="container p-5">
+            <div className="container p-3">
                 <div className="row text-center">
                     <div className="col-12 col-md-6 col-sm-12 p-4">
                         <img src={founder} alt="founder" className="rounded-circle w-50"/>
                     </div>
-                    <div className="col-12 col-md-6 col-sm-12 my-5 p-4">
+                    <div className="col-12 col-md-6 col-sm-12 my-5 px-4">
                         <h1>Vishwesh Dhanadhare</h1>
                         <h5>Founder & Chief Photoghrapher</h5>
                     </div>
@@ -68,15 +68,15 @@ function About() {
                 <div className="col-12 col-md-6 col-sm-12 p-4">
                     <div className="p-5">
                         <div className="flex">
-                            <i class="bi bi-envelope-fill f3"></i>
+                            <i className="bi bi-envelope-fill f3"></i>
                             <p className="px-3 f4">spectrum@gmail.com</p>
                         </div>
                         <div className="flex">
-                            <i class="bi bi-telephone-fill f3"></i>
+                            <i className="bi bi-telephone-fill f3"></i>
                             <p className="px-3 f4">+91 9876543210</p>
                         </div>
                         <div className="flex">
-                            <i class="bi bi-geo-alt-fill f3"></i>
+                            <i className="bi bi-geo-alt-fill f3"></i>
                             <p className="px-3 f4">Spectrum Studio Ground Floor Meghgiri Hostel<br/> Behind Bank of Maharashtra, Ambegaon(Budruk),<br/> Pune-411046</p> 
                         </div>
                     </div>
