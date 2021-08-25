@@ -3,6 +3,8 @@ import img1 from './Img/1.jpg'
 import img2 from './Img/2.jpg'
 import img3 from './Img/3.jpg'
 
+import './Wedding.css'
+
 function Wedding() {
     return (
         <div>
@@ -15,7 +17,7 @@ function Wedding() {
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                    <img src={img1} className="d-block" alt="..."/>
+                    <img src={img1} className="d-block cover" alt="..."/>
                     </div>
                     <div className="carousel-item">
                     <img src={img2} className="d-block" alt="..."/>
