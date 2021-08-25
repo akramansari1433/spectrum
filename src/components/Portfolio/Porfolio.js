@@ -4,7 +4,7 @@ import img1 from './Img/1.jpg'
 function Porfolio() {
     return (
         <div>
-            <h1 className="display-4 text-center">Photography Album</h1>
+            <h1 className="display-4 text-center p-2">Photography Album</h1>
             <div className="p-3 d-flex flex-wrap justify-content-center">
                 <div className="m-3 card" style={{width: '18rem'}}>
                     <img className="card-img-top" src={img1} alt="#Card"/>
