@@ -3,7 +3,6 @@ import img1 from './Img/1.jpg'
 import img2 from './Img/2.jpg'
 import img3 from './Img/3.jpg'
 
-import './Wedding.css'
 
 function Wedding() {
     return (
