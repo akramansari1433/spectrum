@@ -1,28 +1,39 @@
 import React from 'react'
-import img1 from './Img/1.jpg'
-import img2 from './Img/2.jpg'
-import img3 from './Img/3.jpg'
-
+import img1 from './Cover/1.jpg'
+import img2 from './Cover/2.jpg'
+import img3 from './Cover/3.jpg'
+import './Wedding.css'
 
 function Wedding() {
+    const name=[]
+    function importAll(r) {
+        let images = {};
+         r.keys().forEach((item, index) => { 
+             images[item.replace('./', '')] = r(item); 
+             name.push(index);
+            }
+        );
+        return images
+    }
+    const images = importAll(require.context('./Img', false, /\.(png|jpe?g|svg)$/));
     return (
         <div>
             <h1 className="text-center display-4">Wedding Album</h1>
-            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" style={{width:'80%',margin:'auto'}}>
+            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" >
                 <ol className="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
-                <div className="carousel-inner">
+                <div className="carousel-inner px-3 px-md-5 px-lg-5">
                     <div className="carousel-item active">
                     <img src={img1} className="d-block cover" alt="..."/>
                     </div>
                     <div className="carousel-item">
-                    <img src={img2} className="d-block" alt="..."/>
+                    <img src={img2} className="d-block cover" alt="..."/>
                     </div>
                     <div className="carousel-item">
-                    <img src={img3} className="d-block" alt="..."/>
+                    <img src={img3} className="d-block cover" alt="..."/>
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -35,6 +46,16 @@ function Wedding() {
                 </a>
             </div>
             <hr className="w-75 my-4"/>
+            <div className="flex flex-wrap">
+            {
+                name.map((name,i)=>
+                    <div className="w-50 p-3" key={i}>
+                        <img src={images[`${name}.jpg`].default} alt="wedding_image"></img>
+                    </div>
+                )
+            }
+            </div>
+            
         </div>
     )
 }
