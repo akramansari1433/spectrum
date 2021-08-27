@@ -1,7 +1,7 @@
 import React from 'react'
-import img1 from './Cover/1.jpg'
-import img2 from './Cover/2.jpg'
-import img3 from './Cover/3.jpg'
+import img1 from './Img/Cover/1.jpg'
+import img2 from './Img/Cover/2.jpg'
+import img3 from './Img/Cover/3.jpg'
 import './Wedding.css'
 
 function Wedding() {
@@ -46,10 +46,10 @@ function Wedding() {
                 </a>
             </div>
             <hr className="w-75 my-4"/>
-            <div className="flex flex-wrap">
+            <div className="row">
             {
                 name.map((name,i)=>
-                    <div className="w-50 p-3" key={i}>
+                    <div className="col-6 col-md-3 col-lg-4 p-3" key={i}>
                         <img src={images[`${name}.jpg`].default} alt="wedding_image"></img>
                     </div>
                 )
