@@ -46,7 +46,7 @@ function Wedding() {
                 </a>
             </div>
             <hr className="w-75 my-4"/>
-            <div className="row">
+            <div className="flex flex-wrap">
             {
                 name.map((name,i)=>
                     <div className="col-6 col-md-3 col-lg-4 p-3" key={i}>
