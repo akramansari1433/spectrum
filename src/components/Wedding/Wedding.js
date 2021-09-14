@@ -85,7 +85,6 @@ function Wedding() {
                      data-toggle="modal"
                      data-target={`#image${name}`}
                   >
-                     {console.log(`#image${name}`)}
                      <img
                         src={images[`${name}.jpg`].default}
                         alt="wedding_image"
