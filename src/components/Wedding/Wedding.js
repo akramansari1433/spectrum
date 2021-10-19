@@ -95,14 +95,6 @@ function Wedding() {
                      <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                            <div className="modal-body">
-                              <button
-                                 type="button"
-                                 className="close"
-                                 data-dismiss="modal"
-                                 aria-label="Close"
-                              >
-                                 <span aria-hidden="true">&times;</span>
-                              </button>
                               <img
                                  src={images[`${name}.jpg`].default}
                                  alt=""

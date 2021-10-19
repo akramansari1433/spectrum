@@ -23,42 +23,6 @@ function About() {
 
          <hr className="w-75" />
 
-         <h2 className="text-center mt-5">Co-Founders</h2>
-         <div className="p-3 d-flex flex-wrap justify-content-center">
-            <div className="m-3 mx-5" style={{ width: "10rem" }}>
-               <img
-                  className="card-img-top rounded-circle "
-                  src={founder}
-                  alt="#Card"
-               />
-               <div className="card-body text-center">
-                  <h5 className="card-title">Co-founder</h5>
-               </div>
-            </div>
-            <div className="m-3 mx-5" style={{ width: "10rem" }}>
-               <img
-                  className="card-img-top rounded-circle"
-                  src={founder}
-                  alt="#Card"
-               />
-               <div className="card-body text-center">
-                  <h5 className="card-title">Co-founder</h5>
-               </div>
-            </div>
-            <div className="m-3 mx-5" style={{ width: "10rem" }}>
-               <img
-                  className="card-img-top rounded-circle"
-                  src={founder}
-                  alt="#Card"
-               />
-               <div className="card-body text-center">
-                  <h5 className="card-title">Co-founder</h5>
-               </div>
-            </div>
-         </div>
-
-         <hr className="w-75" />
-
          <h2 className="text-center mt-4">Contact Us</h2>
          <div className="row">
             <div className="col-12 col-md-6 col-sm-12 p-3">
