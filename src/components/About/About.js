@@ -24,9 +24,9 @@ function About() {
          <hr className="w-75" />
 
          <h2 className="text-center mt-4">Contact Us</h2>
-         <div className="row">
-            <div className="col-12 col-md-6 col-sm-12 p-3">
-               <form className="px-5">
+         <div className="row mx-md-3 mx-1">
+            <div className="col-12 col-md-6 col-sm-12">
+               <form className="p-md-5 pd-sm-3 mb-5">
                   <div className="form-group">
                      <label htmlFor="exampleInputEmail1">Email address</label>
                      <input
@@ -61,23 +61,23 @@ function About() {
                   </button>
                </form>
             </div>
-            <div className="col-12 col-md-6 col-sm-12 p-4">
-               <div className="p-5">
-                  <div className="flex">
-                     <i className="bi bi-envelope-fill f3"></i>
-                     <p className="px-3 f4">spectrum@gmail.com</p>
+            <div className="col-12 col-md-6 col-sm-12">
+               <div className="p-md-5 pd-sm-3">
+                  <div className="flex py-2">
+                     <i className="bi bi-envelope-fill h4" />
+                     <span className="px-3 lead">spectrum@gmail.com</span>
                   </div>
-                  <div className="flex">
-                     <i className="bi bi-telephone-fill f3"></i>
-                     <p className="px-3 f4">+91 9876543210</p>
+                  <div className="flex py-2">
+                     <i className="bi bi-telephone-fill h4"></i>
+                     <span className="px-3 lead">+91 9876543210</span>
                   </div>
-                  <div className="flex">
-                     <i className="bi bi-geo-alt-fill f3"></i>
-                     <p className="px-3 f4">
+                  <div className="flex py-2">
+                     <i className="bi bi-geo-alt-fill h4"></i>
+                     <span className="px-3 lead">
                         Spectrum Studio Ground Floor Meghgiri Hostel
                         <br /> Behind Bank of Maharashtra, Ambegaon(Budruk),
                         <br /> Pune-411046
-                     </p>
+                     </span>
                   </div>
                </div>
             </div>

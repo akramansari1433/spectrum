@@ -19,7 +19,7 @@ function Wedding() {
    );
    return (
       <div>
-         <h1 className="text-center display-4">Wedding Album</h1>
+         <h1 className="text-center display-4 py-3">Wedding Album</h1>
          <div
             id="carouselExampleIndicators"
             className="carousel slide"
@@ -77,9 +77,9 @@ function Wedding() {
             </a>
          </div>
          <hr className="w-75 my-4" />
-         <div className="flex flex-wrap justify-content-center">
+         <div className="flex flex-wrap justify-content-center row mx-2">
             {name.map((name, i) => (
-               <div className="col-6 col-md-3 col-lg-3 p-3" key={i}>
+               <div className="col-6 col-md-3 col-lg-3 p-1 p-md-2" key={i}>
                   <a
                      href={images[`${name}.jpg`].default}
                      data-toggle="modal"
@@ -98,6 +98,7 @@ function Wedding() {
                               <img
                                  src={images[`${name}.jpg`].default}
                                  alt=""
+                                 className="image"
                               ></img>
                            </div>
                         </div>
