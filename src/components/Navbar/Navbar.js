@@ -72,7 +72,7 @@ function Navbar({ isAdmin, setAdmin }) {
                </li>
                <li className="nav-item">
                   <Link className="nav-link text-white" to="/booking">
-                     Booking
+                     Book Studio
                   </Link>
                </li>
                <li className="nav-item">

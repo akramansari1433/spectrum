@@ -7,9 +7,9 @@ function Nav({ setAdmin }) {
    };
    return (
       <div>
-         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+         <nav className="navbar navbar-expand-lg navbar-dark bg-dark py-3">
             <Link className="navbar-brand" to="/admin">
-               Admin Dashboard
+               <h3 className="diplay-4">Admin Dashboard</h3>
             </Link>
             <button
                className="navbar-toggler"
@@ -25,23 +25,23 @@ function Nav({ setAdmin }) {
             <div className="collapse navbar-collapse" id="navbarNav">
                <ul className="navbar-nav ml-auto">
                   <li className="nav-item active">
-                     <Link className="nav-link" to="/admin/bookings">
+                     <Link className="nav-link h6" to="/admin/bookings">
                         Bookings
                      </Link>
                   </li>
                   <li className="nav-item active">
-                     <Link className="nav-link" to="/admin/feedbacks">
+                     <Link className="nav-link h6" to="/admin/feedbacks">
                         Feedbacks
                      </Link>
                   </li>
                   <li className="nav-item active">
-                     <Link className="nav-link" to="/admin/uploadimage">
+                     <Link className="nav-link h6" to="/admin/uploadimage">
                         Upload Image
                      </Link>
                   </li>
                   <li className="nav-item active">
                      <Link
-                        className="nav-link text-danger"
+                        className="nav-link text-danger h6"
                         to="/admin"
                         onClick={handleLogout}
                      >

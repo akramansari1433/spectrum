@@ -28,7 +28,7 @@ function App() {
             <Route path="/about" component={About} />
             <Route exact path="/admin">
                {isAdmin ? (
-                  <h1 className="display-4 text-center">
+                  <h1 className="display-4 text-center py-5">
                      Welcome to admin dashboard
                   </h1>
                ) : (
@@ -45,7 +45,7 @@ function App() {
                {isAdmin ? <UploadImage /> : <Login setAdmin={setAdmin} />}
             </Route>
          </Switch>
-         <Footer />
+         <Footer isAdmin={isAdmin} />
       </Router>
    );
 }

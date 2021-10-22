@@ -40,7 +40,7 @@ function Booking() {
             <div className="d-flex  mt-3">
                <p className="h5 pr-3">Mobile : </p>
                <input
-                  type="number"
+                  type="tel"
                   maxLength="10"
                   placeholder="Mobile number"
                   required
