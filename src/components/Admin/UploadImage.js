@@ -1,10 +1,39 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 function UploadImage() {
+   const [loading, setLoading] = useState(false);
+   const [category, setCategory] = useState("wedding");
+   let formData;
+   const handleImageChange = (e) => {
+      const image = e.target.files[0];
+      formData = new FormData();
+      formData.append("image", image, image.name);
+   };
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      setLoading(true);
+      if (category === "wedding") {
+         axios
+            .post(
+               "https://asia-south1-spectrum-42da3.cloudfunctions.net/api/image/uploadWedding",
+               formData
+            )
+            .then((res) => {
+               if (res.data) {
+                  setLoading(false);
+                  console.log(res.data);
+               }
+            });
+      }
+      e.target.reset();
+   };
+
    return (
       <div>
          <h1 className="display-4 text-center py-3">Upload Image</h1>
-         <form className="mx-md-5 mx-3 px-md-5 px-3">
+         <form className="mx-md-5 mx-3 px-md-5 px-3" onSubmit={handleSubmit}>
             <div className="form-group row">
                <label htmlFor="category" className="col-sm-2 col-form-label">
                   Choose category:
@@ -13,12 +42,14 @@ function UploadImage() {
                   <select
                      className="form-control"
                      id="category"
-                     onChange={(e) => console.log(e.target.value)}
+                     name="choose"
+                     onChange={(e) => setCategory(e.target.value)}
                   >
-                     <option>Weddings</option>
-                     <option>Fashion & Portrait</option>
-                     <option>Baby</option>
-                     <option>Products</option>
+                     <option disabled>Choose category</option>
+                     <option>wedding</option>
+                     <option>fashion&portrait</option>
+                     <option>baby</option>
+                     <option>product</option>
                   </select>
                </div>
             </div>
@@ -27,11 +58,20 @@ function UploadImage() {
                   Choose image:
                </label>
                <div className="col-sm-10">
-                  <input type="file" className="form-control-file" id="image" />
+                  <input
+                     type="file"
+                     className="form-control-file"
+                     id="image"
+                     onChange={handleImageChange}
+                  />
                </div>
             </div>
             <div className="text-center">
-               <button className="btn btn-dark my-3" type="submit">
+               <button
+                  className="btn btn-dark my-3"
+                  type="submit"
+                  disabled={loading}
+               >
                   Upload
                </button>
             </div>
