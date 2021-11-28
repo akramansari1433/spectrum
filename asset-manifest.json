@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/spectrum/static/css/main.64bdbc49.chunk.css",
-    "main.js": "/spectrum/static/js/main.55f19016.chunk.js",
-    "main.js.map": "/spectrum/static/js/main.55f19016.chunk.js.map",
+    "main.js": "/spectrum/static/js/main.3681adf3.chunk.js",
+    "main.js.map": "/spectrum/static/js/main.3681adf3.chunk.js.map",
     "runtime-main.js": "/spectrum/static/js/runtime-main.bc352882.js",
     "runtime-main.js.map": "/spectrum/static/js/runtime-main.bc352882.js.map",
     "static/css/2.3e712350.chunk.css": "/spectrum/static/css/2.3e712350.chunk.css",
@@ -33,6 +33,6 @@
     "static/css/2.3e712350.chunk.css",
     "static/js/2.aaf1de57.chunk.js",
     "static/css/main.64bdbc49.chunk.css",
-    "static/js/main.55f19016.chunk.js"
+    "static/js/main.3681adf3.chunk.js"
   ]
 }
