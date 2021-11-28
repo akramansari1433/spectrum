@@ -72,7 +72,7 @@ function Feedback() {
                required
             />
             <br />
-            <button className="btn btn-dark my-3" type="submit">
+            <button className="btn btn-danger my-3" type="submit">
                Submit
             </button>
          </form>

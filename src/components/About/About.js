@@ -56,7 +56,7 @@ function About() {
                      />
                   </div>
 
-                  <button type="submit" className="btn btn-dark">
+                  <button type="submit" className="btn btn-danger">
                      Send
                   </button>
                </form>

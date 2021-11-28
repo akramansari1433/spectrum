@@ -13,6 +13,7 @@ function Booking() {
       } else {
          console.log("Booked");
       }
+      e.target.reset();
    };
 
    return (
@@ -42,6 +43,7 @@ function Booking() {
                <input
                   type="tel"
                   maxLength="10"
+                  minLength="10"
                   placeholder="Mobile number"
                   required
                />
@@ -114,7 +116,7 @@ function Booking() {
                </div>
             </div>
 
-            <button className="btn btn-dark my-3 px-5" type="submit">
+            <button className="btn btn-danger my-3 px-5" type="submit">
                Book
             </button>
          </form>
