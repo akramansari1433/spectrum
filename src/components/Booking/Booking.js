@@ -29,17 +29,17 @@ function Booking() {
             <h2 className="py-3">Enter booking details:</h2>
 
             <div className="d-flex">
-               <p className="h5 pr-3">Name : </p>
+               <p className="h5 pr-3">Name:</p>
                <input type="text" placeholder="Name" required />
             </div>
 
             <div className="d-flex  mt-3">
-               <p className="h5 pr-3">Email : </p>
+               <p className="h5 pr-3">Email:</p>
                <input type="email" placeholder="Email" required />
             </div>
 
             <div className="d-flex  mt-3">
-               <p className="h5 pr-3">Mobile : </p>
+               <p className="h5 pr-3">Mobile:</p>
                <input
                   type="tel"
                   maxLength="10"
@@ -50,13 +50,13 @@ function Booking() {
             </div>
 
             <div className="d-flex mt-3">
-               <p className="h5 pr-3">Date : </p>
+               <p className="h5 pr-3">Date:</p>
                <input type="date" min={today} required />
             </div>
 
             <div className="d-flex mt-3">
                <div className="pr-3">
-                  <p className="h5">Time :</p>
+                  <p className="h5">Time:</p>
                </div>
 
                <div className="d-flex flex-column">
