@@ -57,7 +57,7 @@ function Feedback() {
          <hr className="w-75" />
 
          <form className="text-center py-3 mt-3 border-dark mx-md-5 mx-3">
-            <h2 className="">Give your valuable feedback</h2>
+            <h2 className="">Give your feedback</h2>
             <textarea
                rows="3"
                placeholder="Your feedback"

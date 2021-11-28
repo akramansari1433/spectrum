@@ -64,15 +64,15 @@ function About() {
             <div className="col-12 col-md-6 col-sm-12">
                <div className="p-md-5 pd-sm-3">
                   <div className="flex py-2">
-                     <i className="bi bi-envelope-fill h4" />
+                     <i className="bi bi-envelope-fill h4 text-primary" />
                      <span className="px-3 lead">spectrum@gmail.com</span>
                   </div>
                   <div className="flex py-2">
-                     <i className="bi bi-telephone-fill h4"></i>
+                     <i className="bi bi-telephone-fill h4 text-success"></i>
                      <span className="px-3 lead">+91 9876543210</span>
                   </div>
                   <div className="flex py-2">
-                     <i className="bi bi-geo-alt-fill h4"></i>
+                     <i className="bi bi-geo-alt-fill h4 text-danger"></i>
                      <span className="px-3 lead">
                         Spectrum Studio Ground Floor Meghgiri Hostel
                         <br /> Behind Bank of Maharashtra, Ambegaon(Budruk),
