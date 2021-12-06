@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Booking() {
+function BookStudio() {
    const today = new Date().toISOString().split("T")[0];
    const [slot1, setSlot1] = useState(false);
    const [slot2, setSlot2] = useState(false);
@@ -126,4 +126,4 @@ function Booking() {
    );
 }
 
-export default Booking;
+export default BookStudio;

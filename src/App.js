@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Cover from "./components/Cover/Cover";
 import Wedding from "./components/Wedding/Wedding";
-import Booking from "./components/Booking/Booking";
+import BookStudio from "./components/BookStudio/BookStudio";
 import Feedback from "./components/Feedback/Feedback";
 import About from "./components/About/About";
 import Footer from "./components/Footer/Footer";
@@ -23,7 +23,7 @@ function App() {
             <Route exact path="/" component={Cover} />
             <Route path="/spectrum" component={Cover} />
             <Route path="/porfolio/wedding" component={Wedding} />
-            <Route path="/booking" component={Booking} />
+            <Route path="/bookstudio" component={BookStudio} />
             <Route path="/feedback" component={Feedback} />
             <Route path="/about" component={About} />
             <Route exact path="/admin">

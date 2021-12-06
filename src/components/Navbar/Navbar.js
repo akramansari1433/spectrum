@@ -7,7 +7,7 @@ function Navbar({ isAdmin, setAdmin }) {
    const Nav = isAdmin ? (
       <AdminNav setAdmin={setAdmin} />
    ) : (
-      <nav className="navbar  navbar-light bg-dark d-flex flex-row-reverse">
+      <nav className="navbar navbar-expand-lg  navbar-light bg-dark">
          <button
             className="navbar-toggler"
             type="button"
@@ -26,7 +26,7 @@ function Navbar({ isAdmin, setAdmin }) {
             className="collapse navbar-collapse text-center"
             id="navbarTogglerDemo03"
          >
-            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+            <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                <li className="nav-item active">
                   <Link className="nav-link text-white" to="/">
                      Home
@@ -71,7 +71,12 @@ function Navbar({ isAdmin, setAdmin }) {
                   </ul>
                </li>
                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/booking">
+                  <Link className="nav-link text-white" to="/bookphotoshoot">
+                     Book Photoshoot
+                  </Link>
+               </li>
+               <li className="nav-item">
+                  <Link className="nav-link text-white" to="/bookstudio">
                      Book Studio
                   </Link>
                </li>
