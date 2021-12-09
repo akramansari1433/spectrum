@@ -53,6 +53,19 @@ function Navbar({ isAdmin, setAdmin }) {
                         </Link>
                      </li>
                      <li>
+                        <Link
+                           className="dropdown-item"
+                           to="/porfolio/prewedding"
+                        >
+                           Pre-Weddings
+                        </Link>
+                     </li>
+                     <li>
+                        <Link className="dropdown-item" to="/porfolio/makeup">
+                           Makeup
+                        </Link>
+                     </li>
+                     <li>
                         <a className="dropdown-item" href="/">
                            Fashion & Portraits
                         </a>
@@ -70,7 +83,7 @@ function Navbar({ isAdmin, setAdmin }) {
                      </li>
                   </ul>
                </li>
-               <li className="nav-item">
+               {/* <li className="nav-item">
                   <Link className="nav-link text-white" to="/bookphotoshoot">
                      Book Photoshoot
                   </Link>
@@ -84,7 +97,7 @@ function Navbar({ isAdmin, setAdmin }) {
                   <Link className="nav-link text-white" to="/feedback">
                      Feedback
                   </Link>
-               </li>
+               </li> */}
                <li className="nav-item">
                   <Link className="nav-link text-white" to="/about">
                      About Us

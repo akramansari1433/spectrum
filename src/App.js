@@ -12,6 +12,8 @@ import Feedbacks from "./components/Admin/Feedbacks";
 import UploadImage from "./components/Admin/UploadImage";
 import "./App.css";
 import { useState } from "react";
+import PreWedding from "./components/PreWedding/PreWedding";
+import Makeup from "./components/Makeup/Makeup";
 
 function App() {
    const [isAdmin, setAdmin] = useState(false);
@@ -23,6 +25,8 @@ function App() {
             <Route exact path="/" component={Cover} />
             <Route path="/spectrum" component={Cover} />
             <Route path="/porfolio/wedding" component={Wedding} />
+            <Route path="/porfolio/prewedding" component={PreWedding} />
+            <Route path="/porfolio/makeup" component={Makeup} />
             <Route path="/bookstudio" component={BookStudio} />
             <Route path="/feedback" component={Feedback} />
             <Route path="/about" component={About} />
