@@ -66,9 +66,12 @@ function Navbar({ isAdmin, setAdmin }) {
                         </Link>
                      </li>
                      <li>
-                        <a className="dropdown-item" href="/">
+                        <Link
+                           className="dropdown-item"
+                           to="/porfolio/fashionportrait"
+                        >
                            Fashion & Portraits
-                        </a>
+                        </Link>
                      </li>
 
                      <li>

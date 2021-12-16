@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Aishwarya from "./Img/Aishwarya.jpg";
 import Archana from "./Img/Archana.jpg";
 import Shreya from "./Img/Shreya.jpg";
@@ -12,9 +13,9 @@ function Makeup() {
                <img className="card-img-top" src={Aishwarya} alt="CardImage" />
                <div className="card-body">
                   <h5 className="card-title">Aishwarya Palesha</h5>
-                  <a href="/saasf" className="btn btn-primary">
+                  <Link to="/porfolio/aishwarya" className="btn btn-primary">
                      View More
-                  </a>
+                  </Link>
                </div>
             </div>
 
@@ -22,9 +23,9 @@ function Makeup() {
                <img className="card-img-top" src={Archana} alt="CardImage" />
                <div className="card-body">
                   <h5 className="card-title">Archana</h5>
-                  <a href="/saasf" className="btn btn-primary">
+                  <Link to="/porfolio/archana" className="btn btn-primary">
                      View More
-                  </a>
+                  </Link>
                </div>
             </div>
 
@@ -32,9 +33,9 @@ function Makeup() {
                <img className="card-img-top" src={Shreya} alt="CardImage" />
                <div className="card-body">
                   <h5 className="card-title">Shreya Deshmukh</h5>
-                  <a href="/saasf" className="btn btn-primary">
+                  <Link to="/porfolio/shreya" className="btn btn-primary">
                      View More
-                  </a>
+                  </Link>
                </div>
             </div>
          </div>

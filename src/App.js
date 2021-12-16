@@ -14,6 +14,10 @@ import "./App.css";
 import { useState } from "react";
 import PreWedding from "./components/PreWedding/PreWedding";
 import Makeup from "./components/Makeup/Makeup";
+import Aishwarya from "./components/Makeup/Aishwarya/Aishwarya";
+import Archana from "./components/Makeup/Archana/Archana";
+import Shreya from "./components/Makeup/Shreya/Shreya";
+import FashionPortrait from "./components/FashionPortrait/FashionPortrait";
 
 function App() {
    const [isAdmin, setAdmin] = useState(false);
@@ -27,6 +31,13 @@ function App() {
             <Route path="/porfolio/wedding" component={Wedding} />
             <Route path="/porfolio/prewedding" component={PreWedding} />
             <Route path="/porfolio/makeup" component={Makeup} />
+            <Route path="/porfolio/aishwarya" component={Aishwarya} />
+            <Route path="/porfolio/archana" component={Archana} />
+            <Route path="/porfolio/shreya" component={Shreya} />
+            <Route
+               path="/porfolio/fashionportrait"
+               component={FashionPortrait}
+            />
             <Route path="/bookstudio" component={BookStudio} />
             <Route path="/feedback" component={Feedback} />
             <Route path="/about" component={About} />
