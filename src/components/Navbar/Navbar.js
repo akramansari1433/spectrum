@@ -86,7 +86,7 @@ function Navbar({ isAdmin, setAdmin }) {
                      </li>
                   </ul>
                </li>
-               {/* <li className="nav-item">
+               <li className="nav-item">
                   <Link className="nav-link text-white" to="/bookphotoshoot">
                      Book Photoshoot
                   </Link>
@@ -100,7 +100,7 @@ function Navbar({ isAdmin, setAdmin }) {
                   <Link className="nav-link text-white" to="/feedback">
                      Feedback
                   </Link>
-               </li> */}
+               </li>
                <li className="nav-item">
                   <Link className="nav-link text-white" to="/about">
                      About Us
