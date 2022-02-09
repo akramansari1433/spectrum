@@ -7,7 +7,6 @@ import Feedback from "./components/Feedback/Feedback";
 import About from "./components/About/About";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Admin/Login";
-import Bookings from "./components/Admin/Bookings";
 import Feedbacks from "./components/Admin/Feedbacks";
 import UploadImage from "./components/Admin/UploadImage";
 import "./App.css";
@@ -18,6 +17,8 @@ import Aishwarya from "./components/Makeup/Aishwarya/Aishwarya";
 import Archana from "./components/Makeup/Archana/Archana";
 import Shreya from "./components/Makeup/Shreya/Shreya";
 import FashionPortrait from "./components/FashionPortrait/FashionPortrait";
+import BookPhotoshoot from "./components/BookPhotoshoot/BookPhotoshoot";
+import StudioBookings from "./components/Admin/StudioBookings";
 
 function App() {
    const [isAdmin, setAdmin] = useState(false);
@@ -39,6 +40,7 @@ function App() {
                component={FashionPortrait}
             />
             <Route path="/bookstudio" component={BookStudio} />
+            <Route path="/bookphotoshoot" component={BookPhotoshoot} />
             <Route path="/feedback" component={Feedback} />
             <Route path="/about" component={About} />
             <Route exact path="/admin">
@@ -50,8 +52,8 @@ function App() {
                   <Login setAdmin={setAdmin} />
                )}
             </Route>
-            <Route path="/admin/bookings">
-               {isAdmin ? <Bookings /> : <Login setAdmin={setAdmin} />}
+            <Route path="/admin/studiobookings">
+               {isAdmin ? <StudioBookings /> : <Login setAdmin={setAdmin} />}
             </Route>
             <Route path="/admin/feedbacks">
                {isAdmin ? <Feedbacks /> : <Login setAdmin={setAdmin} />}

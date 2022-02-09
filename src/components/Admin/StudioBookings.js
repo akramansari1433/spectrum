@@ -1,6 +1,6 @@
 import React from "react";
 
-function Bookings() {
+function StudioBookings() {
    return (
       <div>
          <h1 className="display-4 text-center py-3">Bookings</h1>
@@ -42,4 +42,4 @@ function Bookings() {
    );
 }
 
-export default Bookings;
+export default StudioBookings;

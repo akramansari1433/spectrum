@@ -26,7 +26,7 @@ function BookStudio() {
             className="py-3 d-flex flex-column align-items-center"
             onSubmit={handleSumit}
          >
-            <h2 className="py-3">Enter booking details:</h2>
+            <h2 className="py-3">Enter details:</h2>
 
             <div className="d-flex">
                <p className="h5 pr-3">Name:</p>
