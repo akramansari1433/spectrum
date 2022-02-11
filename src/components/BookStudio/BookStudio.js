@@ -1,18 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 function BookStudio() {
    const today = new Date().toISOString().split("T")[0];
-   const [slot1, setSlot1] = useState(false);
-   const [slot2, setSlot2] = useState(false);
-   const [slot3, setSlot3] = useState(false);
 
    const handleSumit = (e) => {
       e.preventDefault();
-      if (!slot1 && !slot2 && !slot3) {
-         alert("Please choose time!");
-      } else {
-         console.log("Booked");
-      }
       e.target.reset();
    };
 
@@ -52,68 +44,6 @@ function BookStudio() {
             <div className="d-flex mt-3">
                <p className="h5 pr-3">Date:</p>
                <input type="date" min={today} required />
-            </div>
-
-            <div className="d-flex mt-3">
-               <div className="pr-3">
-                  <p className="h5">Time:</p>
-               </div>
-
-               <div className="d-flex flex-column">
-                  <div className="form-check">
-                     <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox1"
-                        value={slot1}
-                        onClick={(e) =>
-                           e.target.checked ? setSlot1(true) : setSlot1(false)
-                        }
-                     />
-                     <label
-                        className="form-check-label"
-                        htmlFor="inlineCheckbox1"
-                     >
-                        09:00AM-12:00PM
-                     </label>
-                  </div>
-
-                  <div className="form-check form-check-inline">
-                     <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox2"
-                        value={slot2}
-                        onClick={(e) =>
-                           e.target.checked ? setSlot2(true) : setSlot2(false)
-                        }
-                     />
-                     <label
-                        className="form-check-label"
-                        htmlFor="inlineCheckbox2"
-                     >
-                        01:00PM-04:00PM
-                     </label>
-                  </div>
-
-                  <div className="form-check form-check-inline">
-                     <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox3"
-                        value={slot3}
-                        onClick={(e) =>
-                           e.target.checked ? setSlot3(true) : setSlot3(false)
-                        }
-                     />
-                     <label
-                        className="form-check-label"
-                        htmlFor="inlineCheckbox3"
-                     >
-                        05:00PM-08:00PM
-                     </label>
-                  </div>
-               </div>
             </div>
 
             <button className="btn btn-danger my-3 px-5" type="submit">

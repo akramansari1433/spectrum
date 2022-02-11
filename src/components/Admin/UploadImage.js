@@ -17,7 +17,7 @@ function UploadImage() {
       if (category === "wedding") {
          axios
             .post(
-               "https://asia-south1-spectrum-42da3.cloudfunctions.net/api/image/uploadWedding",
+               "http://localhost:5000/spectrum-42da3/asia-south1/api/image/uploadWedding",
                formData
             )
             .then((res) => {

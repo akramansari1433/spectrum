@@ -1,6 +1,32 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import TextField from "@mui/material/TextField";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
 
 function Feedback() {
+   const [message, setMessage] = useState();
+   const [name, setName] = useState();
+   const [response, setResponse] = useState();
+   const [loading, setLoading] = useState(false);
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      setLoading(true);
+      axios
+         .post(
+            "https://asia-south1-spectrum-42da3.cloudfunctions.net/api/feedback",
+            { message, name }
+         )
+         .then((res) => {
+            if (res.data.message) {
+               setLoading(false);
+               setResponse(res.data.message);
+            }
+         });
+      e.target.reset();
+   };
+
    return (
       <div>
          <h1 className="text-center display-4 py-3">Feedbacks</h1>
@@ -56,26 +82,42 @@ function Feedback() {
 
          <hr className="w-75" />
 
-         <form className="text-center py-3 mt-3 border-dark mx-md-5 mx-3">
-            <h2 className="">Give your feedback</h2>
-            <textarea
-               rows="3"
-               placeholder="Your feedback"
-               className=" h5 mt-2"
+         <form
+            className="text-center py-3 mt-3 border-dark mx-md-5 mx-3"
+            onSubmit={handleSubmit}
+         >
+            <h2 className=" pb-3">Give your feedback</h2>
+            <TextField
+               label="Message"
+               multiline
+               maxRows={5}
+               sx={{ width: "20rem", marginBottom: 3 }}
+               onChange={(e) => setMessage(e.target.value)}
                required
             />
             <br />
-            <input
-               type="text"
-               placeholder="Your name"
-               className="h5 mt-2"
+            <TextField
+               label="Name"
+               variant="outlined"
+               sx={{ width: "20rem" }}
+               onChange={(e) => setName(e.target.value)}
                required
             />
             <br />
-            <button className="btn btn-danger my-3" type="submit">
-               Submit
-            </button>
+            <Button
+               variant="contained"
+               sx={{ marginTop: 2 }}
+               type="submit"
+               color="primary"
+            >
+               {loading ? (
+                  <CircularProgress color="inherit" size={25} />
+               ) : (
+                  "Submit"
+               )}
+            </Button>
          </form>
+         <p className="text-center text-success">{response}</p>
 
          <hr className="w-75" />
       </div>
