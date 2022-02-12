@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import TextField from "@mui/material/TextField";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
 
 function BookStudio() {
-   const today = new Date().toISOString().split("T")[0];
+   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+   const [loading, setLoading] = useState(false);
 
    const handleSumit = (e) => {
       e.preventDefault();
+      setLoading(true);
+      setLoading(false);
       e.target.reset();
    };
 
@@ -20,35 +26,54 @@ function BookStudio() {
          >
             <h2 className="py-3">Enter details:</h2>
 
-            <div className="d-flex">
-               <p className="h5 pr-3">Name:</p>
-               <input type="text" placeholder="Name" required />
-            </div>
+            <TextField
+               label="Name"
+               sx={{ width: "20rem", marginBottom: 3 }}
+               required
+               type="text"
+            />
 
-            <div className="d-flex  mt-3">
-               <p className="h5 pr-3">Email:</p>
-               <input type="email" placeholder="Email" required />
-            </div>
+            <TextField
+               label="Email"
+               sx={{ width: "20rem", marginBottom: 3 }}
+               required
+               type="email"
+            />
 
-            <div className="d-flex  mt-3">
-               <p className="h5 pr-3">Mobile:</p>
-               <input
-                  type="tel"
-                  maxLength="10"
-                  minLength="10"
-                  placeholder="Mobile number"
-                  required
-               />
-            </div>
+            <TextField
+               label="Mobile"
+               sx={{ width: "20rem", marginBottom: 3 }}
+               required
+               type="tel"
+               InputProps={{ inputProps: { minLength: 10, maxLength: 10 } }}
+               onKeyPress={(e) => {
+                  if (!/[0-9]/.test(e.key)) {
+                     e.preventDefault();
+                  }
+               }}
+            />
 
-            <div className="d-flex mt-3">
-               <p className="h5 pr-3">Date:</p>
-               <input type="date" min={today} required />
-            </div>
+            <TextField
+               label="Date"
+               type="date"
+               min={date}
+               defaultValue={date}
+               sx={{ width: "20rem", marginBottom: 3 }}
+               InputProps={{ inputProps: { min: date } }}
+               InputLabelProps={{
+                  shrink: true,
+               }}
+               onChange={(e) => setDate(e.target.value)}
+               required
+            />
 
-            <button className="btn btn-danger my-3 px-5" type="submit">
-               Book
-            </button>
+            <Button variant="contained" type="submit" color="primary">
+               {loading ? (
+                  <CircularProgress color="inherit" size={25} />
+               ) : (
+                  "Book"
+               )}
+            </Button>
          </form>
 
          <hr className="w-75" />

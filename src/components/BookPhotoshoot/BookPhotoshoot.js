@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
 
 export default function BookPhotoshoot() {
-   const today = new Date().toISOString().split("T")[0];
+   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+   const [category, setCategory] = useState("");
+   const [loading, setLoading] = useState(false);
 
    const handleSumit = (e) => {
       e.preventDefault();
+      setLoading(true);
+      setLoading(false);
+      e.target.reset();
    };
 
    return (
@@ -19,52 +31,74 @@ export default function BookPhotoshoot() {
          >
             <h2 className="py-3">Enter details:</h2>
 
-            <div className="d-flex">
-               <p className="h5 pr-3">Name:</p>
-               <input type="text" placeholder="Name" required />
-            </div>
+            <TextField
+               label="Name"
+               sx={{ width: "20rem", marginBottom: 3 }}
+               required
+               type="text"
+            />
 
-            <div className="d-flex  mt-3">
-               <p className="h5 pr-3">Email:</p>
-               <input type="email" placeholder="Email" required />
-            </div>
+            <TextField
+               label="Email"
+               sx={{ width: "20rem", marginBottom: 3 }}
+               required
+               type="email"
+            />
 
-            <div className="d-flex  mt-3">
-               <p className="h5 pr-3">Mobile:</p>
-               <input
-                  type="tel"
-                  maxLength="10"
-                  minLength="10"
-                  placeholder="Mobile number"
-                  required
-               />
-            </div>
+            <TextField
+               label="Mobile"
+               InputProps={{ inputProps: { minLength: 10, maxLength: 10 } }}
+               sx={{ width: "20rem", marginBottom: 3 }}
+               type="tel"
+               required
+               onKeyPress={(e) => {
+                  if (!/[0-9]/.test(e.key)) {
+                     e.preventDefault();
+                  }
+               }}
+            />
 
-            <div className="d-flex mt-3">
-               <p className="h5 pr-3">Date:</p>
-               <input type="date" min={today} required />
-            </div>
-
-            <div className="d-flex mt-3">
-               <p className="h5 pr-3">Category:</p>
-               <select
-                  id="category"
-                  name="choose"
-                  //   onChange=""
+            <TextField
+               label="Date"
+               type="date"
+               min={date}
+               defaultValue={date}
+               sx={{ width: "20rem", marginBottom: 3 }}
+               InputProps={{ inputProps: { min: date } }}
+               InputLabelProps={{
+                  shrink: true,
+               }}
+               onChange={(e) => setDate(e.target.value)}
+               required
+            />
+            <FormControl sx={{ width: "20rem", marginBottom: 3 }}>
+               <InputLabel id="demo-simple-select-label">Category</InputLabel>
+               <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={category}
+                  label="Category"
+                  onChange={(e) => {
+                     setCategory(e.target.value);
+                  }}
                >
-                  <option disabled>Choose category</option>
-                  <option>Wedding</option>
-                  <option>Pre-Wedding</option>
-                  <option>Fashion & Portrait</option>
-                  <option>Makeup</option>
-                  <option>Baby</option>
-                  <option>Product</option>
-               </select>
-            </div>
-
-            <button className="btn btn-danger my-3 px-5" type="submit">
-               Book
-            </button>
+                  <MenuItem value="Wedding">Wedding</MenuItem>
+                  <MenuItem value="Pre-Wedding">Pre-Wedding</MenuItem>
+                  <MenuItem value="Fashion & Portrait">
+                     Fashion & Portrait
+                  </MenuItem>
+                  <MenuItem value="Makeup">Makeup</MenuItem>
+                  <MenuItem value="Baby">Baby</MenuItem>
+                  <MenuItem value="Product">Product</MenuItem>
+               </Select>
+            </FormControl>
+            <Button variant="contained" type="submit" color="primary">
+               {loading ? (
+                  <CircularProgress color="inherit" size={25} />
+               ) : (
+                  "Book"
+               )}
+            </Button>
          </form>
 
          <hr className="w-75" />
