@@ -1,27 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-
-const style = {
-   position: "absolute",
-   top: "50%",
-   left: "50%",
-   transform: "translate(-50%, -50%)",
-   width: "22rem",
-   bgcolor: "background.paper",
-   border: "2px solid #000",
-   boxShadow: 24,
-   p: 4,
-};
+import MessageBox from "../../utils/MessageBox";
 
 function Feedback() {
    const [message, setMessage] = useState();
    const [name, setName] = useState();
+
+   const [feedbacks, setFeedbacks] = useState([]);
 
    const [response, setResponse] = useState();
    const [loading, setLoading] = useState(false);
@@ -30,21 +18,26 @@ function Feedback() {
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
 
+   useEffect(() => {
+      setLoading(true);
+      axios.get("/feedback/getFeedbacks").then((res) => {
+         if (res.data) {
+            setLoading(false);
+            setFeedbacks(res.data);
+         }
+      });
+   }, []);
+
    const handleSubmit = (e) => {
       e.preventDefault();
       setLoading(true);
-      axios
-         .post(
-            "https://asia-south1-spectrum-42da3.cloudfunctions.net/api/feedback",
-            { message, name }
-         )
-         .then((res) => {
-            if (res.data.message) {
-               setLoading(false);
-               handleOpen();
-               setResponse(res.data.message);
-            }
-         });
+      axios.post("/feedback", { message, name }).then((res) => {
+         if (res.data.message) {
+            setLoading(false);
+            handleOpen();
+            setResponse(res.data.message);
+         }
+      });
       e.target.reset();
    };
 
@@ -64,16 +57,20 @@ function Feedback() {
                   <br />
                   <p className="lead">by Akram</p>
                </div>
-               <div className="carousel-item text-center">
-                  <i className="h4 text-center">"Best in class"</i>
-                  <br />
-                  <p className="lead">by john</p>
-               </div>
-               <div className="carousel-item text-center">
-                  <i className="h4 text-center">"Best in class"</i>
-                  <br />
-                  <p className="lead">by john</p>
-               </div>
+               {!loading ? (
+                  feedbacks.map((f) => (
+                     <div
+                        className="carousel-item text-center"
+                        key={f.feedbackId}
+                     >
+                        <i className="h4 text-center">{f.message}</i>
+                        <br />
+                        <p className="lead">{f.name}</p>
+                     </div>
+                  ))
+               ) : (
+                  <p>Loading...</p>
+               )}
             </div>
             <a
                className="carousel-control-prev"
@@ -141,24 +138,12 @@ function Feedback() {
 
          <hr className="w-75" />
 
-         <Modal
+         <MessageBox
             open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-         >
-            <Box sx={style}>
-               <Typography id="modal-modal-title" variant="h6" component="h2">
-                  {response}
-               </Typography>
-               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  Thank you for your valuable feedback.
-               </Typography>
-               <Button sx={{ marginTop: 2 }} onClick={handleClose}>
-                  Close
-               </Button>
-            </Box>
-         </Modal>
+            handleClose={handleClose}
+            response={response}
+            message="Thank you for your valuable feedback."
+         />
       </div>
    );
 }

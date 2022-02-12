@@ -6,22 +6,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
 import axios from "axios";
-
-const style = {
-   position: "absolute",
-   top: "50%",
-   left: "50%",
-   transform: "translate(-50%, -50%)",
-   width: "22rem",
-   bgcolor: "background.paper",
-   border: "2px solid #000",
-   boxShadow: 24,
-   p: 4,
-};
+import MessageBox from "../../utils/MessageBox";
 
 export default function BookPhotoshoot() {
    const [name, setName] = useState();
@@ -42,10 +28,7 @@ export default function BookPhotoshoot() {
       e.preventDefault();
       setLoading(true);
       axios
-         .post(
-            "https://asia-south1-spectrum-42da3.cloudfunctions.net/api/booking/photoshoot",
-            { name, email, phone, date, category }
-         )
+         .post("/booking/photoshoot", { name, email, phone, date, category })
          .then((res) => {
             if (res.data.message) {
                setLoading(false);
@@ -144,29 +127,18 @@ export default function BookPhotoshoot() {
                   "Book"
                )}
             </Button>
+
             <p className="text-danger">{error}</p>
          </form>
 
          <hr className="w-75" />
 
-         <Modal
+         <MessageBox
             open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-         >
-            <Box sx={style}>
-               <Typography id="modal-modal-title" variant="h6" component="h2">
-                  {response}
-               </Typography>
-               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  Thank you for choosing us.
-               </Typography>
-               <Button sx={{ marginTop: 2 }} onClick={handleClose}>
-                  Close
-               </Button>
-            </Box>
-         </Modal>
+            handleClose={handleClose}
+            response={response}
+            message="Thank you for choosing us."
+         />
       </div>
    );
 }
