@@ -1,18 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function StudioBookings() {
-   const [bookings, setBookings] = useState([]);
+function Photoshoots() {
+   const [photoshoots, setPhotoshoots] = useState([]);
    const [loadingData, setLoadingData] = useState(false);
 
    useEffect(() => {
       setLoadingData(true);
       axios
-         .get("/booking/getStudioBookings")
+         .get("/booking/getPhotoshoots")
          .then((res) => {
             if (res.data) {
                setLoadingData(false);
-               setBookings(res.data);
+               setPhotoshoots(res.data);
             }
          })
          .catch((err) => {
@@ -33,16 +33,18 @@ function StudioBookings() {
                      <th scope="col">Name</th>
                      <th scope="col">Email</th>
                      <th scope="col">Phone</th>
+                     <th scope="col">Category</th>
                      <th scope="col"></th>
                   </tr>
                </thead>
                <tbody>
-                  {bookings.map((b) => (
-                     <tr key={b.bookingId}>
-                        <td>{b.date}</td>
-                        <td>{b.name}</td>
-                        <td>{b.email}</td>
-                        <td>{b.phone}</td>
+                  {photoshoots.map((p) => (
+                     <tr key={p.photoshootId}>
+                        <td>{p.date}</td>
+                        <td>{p.name}</td>
+                        <td>{p.email}</td>
+                        <td>{p.phone}</td>
+                        <td>{p.category}</td>
                         <td>
                            <button
                               style={{
@@ -64,4 +66,4 @@ function StudioBookings() {
    );
 }
 
-export default StudioBookings;
+export default Photoshoots;

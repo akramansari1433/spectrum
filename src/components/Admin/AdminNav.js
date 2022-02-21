@@ -25,6 +25,11 @@ function Nav({ setAdmin }) {
             <div className="collapse navbar-collapse" id="navbarNav">
                <ul className="navbar-nav ml-auto">
                   <li className="nav-item active">
+                     <Link className="nav-link h6" to="/admin/photoshoots">
+                        Photoshoots
+                     </Link>
+                  </li>
+                  <li className="nav-item active">
                      <Link className="nav-link h6" to="/admin/studiobookings">
                         Studio Bookings
                      </Link>

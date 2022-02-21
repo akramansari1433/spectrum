@@ -13,31 +13,42 @@ function Feedback() {
 
    const [response, setResponse] = useState();
    const [loading, setLoading] = useState(false);
+   const [loadingData, setLoadingData] = useState(false);
 
    const [open, setOpen] = useState(false);
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
 
    useEffect(() => {
-      setLoading(true);
-      axios.get("/feedback/getFeedbacks").then((res) => {
-         if (res.data) {
-            setLoading(false);
-            setFeedbacks(res.data);
-         }
-      });
+      setLoadingData(true);
+      axios
+         .get("/feedback/getFeedbacks")
+         .then((res) => {
+            if (res.data) {
+               setLoadingData(false);
+               setFeedbacks(res.data);
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
    }, []);
 
    const handleSubmit = (e) => {
       e.preventDefault();
       setLoading(true);
-      axios.post("/feedback", { message, name }).then((res) => {
-         if (res.data.message) {
-            setLoading(false);
-            handleOpen();
-            setResponse(res.data.message);
-         }
-      });
+      axios
+         .post("/feedback", { message, name })
+         .then((res) => {
+            if (res.data.message) {
+               setLoading(false);
+               handleOpen();
+               setResponse(res.data.message);
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
       e.target.reset();
    };
 
@@ -57,7 +68,7 @@ function Feedback() {
                   <br />
                   <p className="lead">by Akram</p>
                </div>
-               {!loading ? (
+               {!loadingData ? (
                   feedbacks.map((f) => (
                      <div
                         className="carousel-item text-center"
@@ -65,11 +76,11 @@ function Feedback() {
                      >
                         <i className="h4 text-center">{f.message}</i>
                         <br />
-                        <p className="lead">{f.name}</p>
+                        <p className="lead">by {f.name}</p>
                      </div>
                   ))
                ) : (
-                  <p>Loading...</p>
+                  <p className="text-center">Loading...</p>
                )}
             </div>
             <a

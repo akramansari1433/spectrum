@@ -19,6 +19,7 @@ import Shreya from "./components/Makeup/Shreya/Shreya";
 import FashionPortrait from "./components/FashionPortrait/FashionPortrait";
 import BookPhotoshoot from "./components/BookPhotoshoot/BookPhotoshoot";
 import StudioBookings from "./components/Admin/StudioBookings";
+import Photoshoots from "./components/Admin/Photoshoots";
 
 function App() {
    const [isAdmin, setAdmin] = useState(false);
@@ -51,6 +52,9 @@ function App() {
                ) : (
                   <Login setAdmin={setAdmin} />
                )}
+            </Route>
+            <Route path="/admin/photoshoots">
+               {isAdmin ? <Photoshoots /> : <Login setAdmin={setAdmin} />}
             </Route>
             <Route path="/admin/studiobookings">
                {isAdmin ? <StudioBookings /> : <Login setAdmin={setAdmin} />}
