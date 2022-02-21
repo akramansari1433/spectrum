@@ -21,7 +21,7 @@ function Photoshoots() {
    }, []);
    return (
       <div>
-         <h1 className="display-4 text-center py-3">Bookings</h1>
+         <h1 className="display-4 text-center py-3">Photoshoots</h1>
 
          {loadingData ? (
             <p className="text-center h4">Loading...</p>
