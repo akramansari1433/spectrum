@@ -52,40 +52,42 @@ function StudioBookings() {
          {loadingData ? (
             <p className="text-center h4">Loading...</p>
          ) : (
-            <table className="table table-striped">
-               <thead className="thead-dark">
-                  <tr>
-                     <th scope="col">Date</th>
-                     <th scope="col">Name</th>
-                     <th scope="col">Email</th>
-                     <th scope="col">Phone</th>
-                     <th scope="col"></th>
-                  </tr>
-               </thead>
-               <tbody>
-                  {bookings.map((b) => (
-                     <tr key={b.bookingId}>
-                        <td>{b.date}</td>
-                        <td>{b.name}</td>
-                        <td>{b.email}</td>
-                        <td>{b.phone}</td>
-                        <td>
-                           <button
-                              style={{
-                                 border: "none",
-                                 background: "transparent",
-                              }}
-                              disabled={loading}
-                              className="h4 px-3 text-dark"
-                              onClick={() => handleDelete(b.bookingId)}
-                           >
-                              <i className="bi bi-trash text-danger" />
-                           </button>
-                        </td>
+            <div style={{ overflow: "auto", width: "95vw", margin: "auto" }}>
+               <table className="table table-striped">
+                  <thead className="thead-dark">
+                     <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col"></th>
                      </tr>
-                  ))}
-               </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                     {bookings.map((b) => (
+                        <tr key={b.bookingId}>
+                           <td>{b.date}</td>
+                           <td>{b.name}</td>
+                           <td>{b.email}</td>
+                           <td>{b.phone}</td>
+                           <td>
+                              <button
+                                 style={{
+                                    border: "none",
+                                    background: "transparent",
+                                 }}
+                                 disabled={loading}
+                                 className="h4 px-3 text-dark"
+                                 onClick={() => handleDelete(b.bookingId)}
+                              >
+                                 <i className="bi bi-trash text-danger" />
+                              </button>
+                           </td>
+                        </tr>
+                     ))}
+                  </tbody>
+               </table>
+            </div>
          )}
 
          <MessageBox
