@@ -1,9 +1,35 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import MessageBox from "../../utils/MessageBox";
 
 function Feedbacks() {
    const [feedbacks, setFeedbacks] = useState([]);
+
    const [loadingData, setLoadingData] = useState(false);
+   const [response, setResponse] = useState();
+   const [loading, setLoading] = useState(false);
+
+   const [open, setOpen] = useState(false);
+   const handleOpen = () => setOpen(true);
+   const handleClose = () => {
+      setOpen(false);
+      window.location.reload(false);
+   };
+
+   const handleDelete = (id) => {
+      axios
+         .delete(`/feedback/${id}`)
+         .then((res) => {
+            if (res.data.message) {
+               setLoading(false);
+               handleOpen();
+               setResponse(res.data.message);
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
+   };
 
    useEffect(() => {
       setLoadingData(true);
@@ -45,8 +71,9 @@ function Feedbacks() {
                                  border: "none",
                                  background: "transparent",
                               }}
+                              disabled={loading}
                               className="h4 px-3 text-dark"
-                              href="https://www.instagram.com/"
+                              onClick={() => handleDelete(f.feedbackId)}
                            >
                               <i className="bi bi-trash text-danger" />
                            </button>
@@ -56,6 +83,12 @@ function Feedbacks() {
                </tbody>
             </table>
          )}
+
+         <MessageBox
+            open={open}
+            handleClose={handleClose}
+            response={response}
+         />
       </div>
    );
 }

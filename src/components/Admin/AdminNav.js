@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 function Nav({ setAdmin }) {
    const handleLogout = () => {
-      setAdmin(false);
+      window.localStorage.clear();
+      setAdmin(window.localStorage.getItem("admin"));
    };
    return (
       <div>

@@ -2,7 +2,8 @@ import React from "react";
 
 function Login({ setAdmin }) {
    const handleSumit = () => {
-      setAdmin(true);
+      window.localStorage.setItem("admin", true);
+      setAdmin(window.localStorage.getItem("admin"));
    };
    return (
       <div>

@@ -22,7 +22,7 @@ import StudioBookings from "./components/Admin/StudioBookings";
 import Photoshoots from "./components/Admin/Photoshoots";
 
 function App() {
-   const [isAdmin, setAdmin] = useState(false);
+   const [isAdmin, setAdmin] = useState(window.localStorage.getItem("admin"));
 
    return (
       <Router>
