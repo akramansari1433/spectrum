@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import img1 from "./Img/Cover/1.jpg";
-import img2 from "./Img/Cover/2.jpg";
-import img3 from "./Img/Cover/3.jpg";
+import img1 from "./Img/1.jpg";
+import img2 from "./Img/2.jpg";
+import img3 from "./Img/3.jpg";
 import Carousel from "../../utils/Carousel";
 import Gallery from "../../utils/Gallery";
 
