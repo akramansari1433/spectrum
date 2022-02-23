@@ -1,9 +1,23 @@
 import axios from "axios";
 import React, { useState } from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
+import MessageBox from "../../utils/MessageBox";
+import Input from "@mui/material/Input";
 
 function UploadImage() {
    const [loading, setLoading] = useState(false);
-   const [category, setCategory] = useState("wedding");
+   const [category, setCategory] = useState("");
+   const [response, setResponse] = useState();
+
+   const [open, setOpen] = useState(false);
+   const handleOpen = () => setOpen(true);
+   const handleClose = () => setOpen(false);
+
    let formData;
    const handleImageChange = (e) => {
       const image = e.target.files[0];
@@ -14,18 +28,46 @@ function UploadImage() {
    const handleSubmit = (e) => {
       e.preventDefault();
       setLoading(true);
-      if (category === "wedding") {
-         axios
-            .post(
-               "http://localhost:5000/spectrum-42da3/asia-south1/api/image/uploadWedding",
-               formData
-            )
-            .then((res) => {
-               if (res.data) {
-                  setLoading(false);
-                  console.log(res.data);
-               }
-            });
+      if (category === "Wedding") {
+         axios.post("/image/uploadWedding", formData).then((res) => {
+            if (res.data) {
+               setLoading(false);
+               setResponse(res.data.message);
+               handleOpen();
+            }
+         });
+      } else if (category === "Pre-Wedding") {
+         axios.post("/image/uploadPreWedding", formData).then((res) => {
+            if (res.data) {
+               setLoading(false);
+               setResponse(res.data.message);
+               handleOpen();
+            }
+         });
+      } else if (category === "Fashion & Portrait") {
+         axios.post("/image/uploadFashion&Portrait", formData).then((res) => {
+            if (res.data) {
+               setLoading(false);
+               setResponse(res.data.message);
+               handleOpen();
+            }
+         });
+      } else if (category === "Baby") {
+         axios.post("/image/uploadBaby", formData).then((res) => {
+            if (res.data) {
+               setLoading(false);
+               setResponse(res.data.message);
+               handleOpen();
+            }
+         });
+      } else if (category === "Product") {
+         axios.post("/image/uploadProduct", formData).then((res) => {
+            if (res.data) {
+               setLoading(false);
+               setResponse(res.data.message);
+               handleOpen();
+            }
+         });
       }
       e.target.reset();
    };
@@ -33,49 +75,52 @@ function UploadImage() {
    return (
       <div>
          <h1 className="display-4 text-center py-3">Upload Image</h1>
-         <form className="mx-md-5 mx-3 px-md-5 px-3" onSubmit={handleSubmit}>
-            <div className="form-group row">
-               <label htmlFor="category" className="col-sm-2 col-form-label">
-                  Choose category:
-               </label>
-               <div className="col-sm-10">
-                  <select
-                     className="form-control"
-                     id="category"
-                     name="choose"
-                     onChange={(e) => setCategory(e.target.value)}
-                  >
-                     <option disabled>Choose category</option>
-                     <option>wedding</option>
-                     <option>fashion&portrait</option>
-                     <option>baby</option>
-                     <option>product</option>
-                  </select>
-               </div>
-            </div>
-            <div className="form-group row">
-               <label htmlFor="category" className="col-sm-2 col-form-label">
-                  Choose image:
-               </label>
-               <div className="col-sm-10">
-                  <input
-                     type="file"
-                     className="form-control-file"
-                     id="image"
-                     onChange={handleImageChange}
-                  />
-               </div>
-            </div>
-            <div className="text-center">
-               <button
-                  className="btn btn-dark my-3"
-                  type="submit"
-                  disabled={loading}
+         <form
+            className="py-3 d-flex flex-column align-items-center"
+            onSubmit={handleSubmit}
+         >
+            <FormControl sx={{ width: "20rem", marginBottom: 3 }}>
+               <InputLabel id="demo-simple-select-label">Category</InputLabel>
+               <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={category}
+                  label="Category"
+                  onChange={(e) => {
+                     setCategory(e.target.value);
+                  }}
                >
-                  Upload
-               </button>
-            </div>
+                  <MenuItem value="Wedding">Wedding</MenuItem>
+                  <MenuItem value="Pre-Wedding">Pre-Wedding</MenuItem>
+                  <MenuItem value="Fashion & Portrait">
+                     Fashion & Portrait
+                  </MenuItem>
+                  <MenuItem value="Baby">Baby</MenuItem>
+                  <MenuItem value="Product">Product</MenuItem>
+               </Select>
+            </FormControl>
+
+            <Input
+               accept="image/*"
+               htmlFor="contained-button-file"
+               multiple
+               type="file"
+               onChange={handleImageChange}
+            />
+            <Button variant="contained" type="submit" sx={{ marginTop: 3 }}>
+               {loading ? (
+                  <CircularProgress color="inherit" size={25} />
+               ) : (
+                  "Upload"
+               )}
+            </Button>
          </form>
+
+         <MessageBox
+            open={open}
+            handleClose={handleClose}
+            response={response}
+         />
       </div>
    );
 }
