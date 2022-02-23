@@ -1,22 +1,29 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import img1 from "./Img/Cover/1.jpg";
 import img2 from "./Img/Cover/2.jpg";
 import img3 from "./Img/Cover/3.jpg";
 import "./Wedding.css";
 
 function Wedding() {
-   const name = [];
-   function importAll(r) {
-      let images = {};
-      r.keys().forEach((item, index) => {
-         images[item.replace("./", "")] = r(item);
-         name.push(index);
-      });
-      return images;
-   }
-   const images = importAll(
-      require.context("./Img", false, /\.(png|jpe?g|svg)$/)
-   );
+   const [images, setImages] = useState([]);
+   const [loadingData, setLoadingData] = useState(false);
+
+   useEffect(() => {
+      setLoadingData(true);
+      axios
+         .get("/image/getWeddings")
+         .then((res) => {
+            if (res.data) {
+               setLoadingData(false);
+               setImages(res.data);
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
+   }, []);
+
    return (
       <div>
          <h1 className="text-center display-4 py-3">Wedding Album</h1>
@@ -76,36 +83,45 @@ function Wedding() {
                <span className="sr-only">Next</span>
             </a>
          </div>
+
          <hr className="w-75 my-4" />
+
          <div className="flex flex-wrap justify-content-center row mx-2">
-            {name.map((name, i) => (
-               <div className="col-6 col-md-3 col-lg-3 p-1 p-md-2" key={i}>
-                  <a
-                     href={images[`${name}.jpg`].default}
-                     data-toggle="modal"
-                     data-target={`#image${name}`}
+            {loadingData ? (
+               <p className="h4">Loading...</p>
+            ) : (
+               images.map((i) => (
+                  <div
+                     className="col-6 col-md-3 col-lg-3 p-1 p-md-2"
+                     key={i.imageId}
                   >
-                     <img
-                        src={images[`${name}.jpg`].default}
-                        alt="wedding_image"
-                        className="image"
-                     ></img>
-                  </a>
-                  <div className="modal fade " id={`image${name}`}>
-                     <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                           <div className="modal-body">
-                              <img
-                                 src={images[`${name}.jpg`].default}
-                                 alt=""
-                                 className="image"
-                              ></img>
+                     <a
+                        href={i.Image}
+                        data-toggle="modal"
+                        data-target={`#image${i.imageId}`}
+                     >
+                        <img
+                           src={i.Image}
+                           alt="wedding_image"
+                           className="image"
+                        ></img>
+                     </a>
+                     <div className="modal fade " id={`image${i.imageId}`}>
+                        <div className="modal-dialog modal-dialog-centered">
+                           <div className="modal-content">
+                              <div className="modal-body">
+                                 <img
+                                    src={i.Image}
+                                    alt=""
+                                    className="image"
+                                 ></img>
+                              </div>
                            </div>
                         </div>
                      </div>
                   </div>
-               </div>
-            ))}
+               ))
+            )}
          </div>
       </div>
    );
