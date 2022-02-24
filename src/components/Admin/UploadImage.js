@@ -10,9 +10,10 @@ import MessageBox from "../../utils/MessageBox";
 import Input from "@mui/material/Input";
 
 function UploadImage() {
-   const [loading, setLoading] = useState(false);
    const [category, setCategory] = useState("");
+   const [makeupArtist, setMakeupArtist] = useState("");
    const [response, setResponse] = useState();
+   const [loading, setLoading] = useState(false);
 
    const [open, setOpen] = useState(false);
    const handleOpen = () => setOpen(true);
@@ -68,6 +69,34 @@ function UploadImage() {
                handleOpen();
             }
          });
+      } else if (category === "Makeup") {
+         if (makeupArtist === "Aishwarya") {
+            axios
+               .post("/image/uploadMakeup/aishwarya", formData)
+               .then((res) => {
+                  if (res.data) {
+                     setLoading(false);
+                     setResponse(res.data.message);
+                     handleOpen();
+                  }
+               });
+         } else if (makeupArtist === "Archana") {
+            axios.post("/image/uploadMakeup/archana", formData).then((res) => {
+               if (res.data) {
+                  setLoading(false);
+                  setResponse(res.data.message);
+                  handleOpen();
+               }
+            });
+         } else if (makeupArtist === "Shreya") {
+            axios.post("/image/uploadMakeup/Shreya", formData).then((res) => {
+               if (res.data) {
+                  setLoading(false);
+                  setResponse(res.data.message);
+                  handleOpen();
+               }
+            });
+         }
       }
       e.target.reset();
    };
@@ -95,8 +124,33 @@ function UploadImage() {
                   <MenuItem value="Fashion & Portrait">
                      Fashion & Portrait
                   </MenuItem>
+                  <MenuItem value="Makeup">Makeup</MenuItem>
                   <MenuItem value="Baby">Baby</MenuItem>
                   <MenuItem value="Product">Product</MenuItem>
+               </Select>
+            </FormControl>
+
+            <FormControl sx={{ width: "20rem", marginBottom: 3 }}>
+               <InputLabel
+                  id="demo-simple-select-label"
+                  hidden={category !== "Makeup"}
+               >
+                  Makeup Artist
+               </InputLabel>
+               <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={makeupArtist}
+                  label="Makeup Artist"
+                  onChange={(e) => {
+                     setMakeupArtist(e.target.value);
+                  }}
+                  disabled={category !== "Makeup"}
+                  hidden={category !== "Makeup"}
+               >
+                  <MenuItem value="Aishwarya">Aishwarya</MenuItem>
+                  <MenuItem value="Archana">Archana</MenuItem>
+                  <MenuItem value="Shreya">Shreya</MenuItem>
                </Select>
             </FormControl>
 
