@@ -60,6 +60,8 @@ function StudioBookings() {
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
+                        <th scope="col">PaymentId</th>
+                        <th scope="col">Amount Paid</th>
                         <th scope="col"></th>
                      </tr>
                   </thead>
@@ -70,6 +72,8 @@ function StudioBookings() {
                            <td>{b.name}</td>
                            <td>{b.email}</td>
                            <td>{b.phone}</td>
+                           <td>{b.paymentId}</td>
+                           <td>{b.amount}</td>
                            <td>
                               <button
                                  style={{

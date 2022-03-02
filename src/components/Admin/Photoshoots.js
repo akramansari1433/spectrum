@@ -64,6 +64,8 @@ function Photoshoots() {
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Category</th>
+                        <th scope="col">PaymentId</th>
+                        <th scope="col">Amount Paid</th>
                         <th scope="col"></th>
                      </tr>
                   </thead>
@@ -75,6 +77,8 @@ function Photoshoots() {
                            <td>{p.email}</td>
                            <td>{p.phone}</td>
                            <td>{p.category}</td>
+                           <td>{p.paymentId}</td>
+                           <td>{p.amount}</td>
                            <td>
                               <button
                                  style={{

@@ -6,10 +6,14 @@ import axios from "axios";
 import MessageBox from "../../utils/MessageBox";
 
 function BookStudio() {
+   let today = new Date().toISOString().split("T")[0];
+
    const [name, setName] = useState();
    const [email, setEmail] = useState();
    const [phone, setPhone] = useState();
-   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+   const [date, setDate] = useState(today);
+
+   const [amount] = useState(1000);
 
    const [response, setResponse] = useState();
    const [error, setError] = useState();
@@ -19,24 +23,86 @@ function BookStudio() {
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
 
+   const loadScript = (src) => {
+      return new Promise((resolve) => {
+         const script = document.createElement("script");
+         script.src = src;
+
+         script.onload = () => {
+            resolve(true);
+         };
+
+         script.onerror = () => {
+            resolve(false);
+         };
+
+         document.body.appendChild(script);
+      });
+   };
+
+   const displayRazorpay = async () => {
+      const res = await loadScript(
+         "https://checkout.razorpay.com/v1/checkout.js"
+      );
+
+      if (!res) {
+         alert("You are offline. Failed to load Razorpay.");
+         return;
+      }
+
+      const options = {
+         key: "rzp_test_FMb8kaVR7nUUN4",
+         currency: "INR",
+         amount: amount * 100,
+         name: "Spectrum Photography and Films",
+         description: "Booking payment",
+         image: "",
+
+         handler: function (response) {
+            alert("Payment Successfull!");
+            axios
+               .post("/booking/studio", {
+                  name,
+                  email,
+                  phone,
+                  date,
+                  amount,
+                  paymentId: response.razorpay_payment_id,
+               })
+               .then((res) => {
+                  if (res.data.message) {
+                     setLoading(false);
+                     handleOpen();
+                     setResponse(res.data.message);
+                     setError("");
+                  }
+               })
+               .catch((err) => {
+                  console.log(err);
+                  setLoading(false);
+               });
+         },
+      };
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+   };
+
    const handleSumit = (e) => {
       e.preventDefault();
       setLoading(true);
       axios
-         .post("/booking/studio", { name, email, phone, date })
+         .get(`/booking/studioAvailability/${date}`)
          .then((res) => {
             if (res.data.message) {
-               setLoading(false);
-               handleOpen();
-               setResponse(res.data.message);
-               e.target.reset();
-               setError("");
+               displayRazorpay();
             }
          })
          .catch((err) => {
             setError(err.response.data.error);
             setLoading(false);
          });
+
+      e.target.reset();
    };
 
    return (
@@ -84,10 +150,8 @@ function BookStudio() {
             <TextField
                label="Date"
                type="date"
-               min={date}
-               defaultValue={date}
                sx={{ width: "20rem", marginBottom: 3 }}
-               InputProps={{ inputProps: { min: date } }}
+               InputProps={{ inputProps: { min: today } }}
                InputLabelProps={{
                   shrink: true,
                }}

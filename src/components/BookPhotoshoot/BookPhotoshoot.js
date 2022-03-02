@@ -10,12 +10,14 @@ import axios from "axios";
 import MessageBox from "../../utils/MessageBox";
 
 export default function BookPhotoshoot() {
+   let today = new Date().toISOString().split("T")[0];
+
    const [name, setName] = useState();
    const [email, setEmail] = useState();
    const [phone, setPhone] = useState();
-   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+   const [date, setDate] = useState(today);
    const [category, setCategory] = useState("");
-   const [paymentId, setPaymentId] = useState();
+
    const [amount] = useState(1000);
 
    const [response, setResponse] = useState();
@@ -62,8 +64,7 @@ export default function BookPhotoshoot() {
          image: "",
 
          handler: function (response) {
-            alert("Payment successfull");
-            setPaymentId(response.razorpay_payment_id);
+            alert("Payment Successfull!");
             axios
                .post("/booking/photoshoot", {
                   name,
@@ -71,8 +72,8 @@ export default function BookPhotoshoot() {
                   phone,
                   date,
                   category,
-                  paymentId,
                   amount,
+                  paymentId: response.razorpay_payment_id,
                })
                .then((res) => {
                   if (res.data.message) {
@@ -107,7 +108,7 @@ export default function BookPhotoshoot() {
             setLoading(false);
          });
 
-      // e.target.reset();
+      e.target.reset();
    };
 
    return (
@@ -155,10 +156,8 @@ export default function BookPhotoshoot() {
             <TextField
                label="Date"
                type="date"
-               min={date}
-               defaultValue={date}
                sx={{ width: "20rem", marginBottom: 3 }}
-               InputProps={{ inputProps: { min: date } }}
+               InputProps={{ inputProps: { min: today } }}
                InputLabelProps={{
                   shrink: true,
                }}
