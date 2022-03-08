@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MessageBox from "../../utils/MessageBox";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 function Photoshoots() {
    const [photoshoots, setPhotoshoots] = useState([]);
@@ -15,6 +17,10 @@ function Photoshoots() {
       setOpen(false);
       window.location.reload(false);
    };
+
+   const [startDate, setStartDate] = useState();
+   const [endDate, setEndDate] = useState();
+   const [filteredData, setFilteredData] = useState([]);
 
    const handleDelete = (id) => {
       axios
@@ -31,6 +37,13 @@ function Photoshoots() {
          });
    };
 
+   const handleFilter = (e) => {
+      e.preventDefault();
+      let data = photoshoots.filter((d) => {
+         return startDate <= d.date && d.date <= endDate;
+      });
+      setFilteredData(data);
+   };
    useEffect(() => {
       setLoadingData(true);
       axios
@@ -39,6 +52,7 @@ function Photoshoots() {
             if (res.data) {
                setLoadingData(false);
                setPhotoshoots(res.data);
+               setFilteredData(res.data);
             }
          })
          .catch((err) => {
@@ -48,6 +62,34 @@ function Photoshoots() {
    return (
       <div>
          <h1 className="display-4 text-center py-3">Photoshoots</h1>
+         <form
+            className="d-flex justify-content-end align-items-center p-3"
+            onSubmit={handleFilter}
+         >
+            <TextField
+               label="Start Date"
+               type="date"
+               sx={{ marginX: 1 }}
+               InputLabelProps={{
+                  shrink: true,
+               }}
+               onChange={(e) => setStartDate(e.target.value)}
+               required
+            />
+            <TextField
+               label="End Date"
+               type="date"
+               sx={{ marginX: 1 }}
+               InputLabelProps={{
+                  shrink: true,
+               }}
+               onChange={(e) => setEndDate(e.target.value)}
+               required
+            />
+            <Button variant="contained" type="submit">
+               Filter
+            </Button>
+         </form>
 
          {loadingData ? (
             <p className="text-center h4">Loading...</p>
@@ -70,7 +112,7 @@ function Photoshoots() {
                      </tr>
                   </thead>
                   <tbody>
-                     {photoshoots.map((p) => (
+                     {filteredData.map((p) => (
                         <tr key={p.photoshootId}>
                            <td>{p.date}</td>
                            <td>{p.name}</td>
