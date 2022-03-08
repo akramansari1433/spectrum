@@ -1,6 +1,8 @@
 import React from "react";
 import founder from "./Img/founder.jpg";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 function About() {
    return (
@@ -26,43 +28,41 @@ function About() {
          <h2 className="text-center mt-4">Contact Us</h2>
          <div className="row mx-md-3 mx-1">
             <div className="col-12 col-md-6 col-sm-12">
-               <form className="p-md-5 pd-sm-3 mb-5">
-                  <div className="form-group">
-                     <label htmlFor="exampleInputEmail1">Email address</label>
-                     <input
-                        type="email"
-                        className="form-control w-75"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="Enter email"
-                     />
-                  </div>
-                  <div className="form-group">
-                     <label htmlFor="exampleInputPassword1">Subjcet</label>
-                     <input
-                        type="subjcet"
-                        className="form-control w-75"
-                        id="exampleInputPassword1"
-                        placeholder="Enter Subject"
-                     />
-                  </div>
-                  <div className="form-group">
-                     <label htmlFor="exampleInputPassword1">Message</label>
-                     <textarea
-                        type="subjcet"
-                        className="form-control w-75"
-                        id="exampleInputPassword1"
-                        placeholder="Enter Message"
-                     />
-                  </div>
-
-                  <button type="submit" className="btn btn-danger">
-                     Send
-                  </button>
+               <form className="d-flex flex-column align-items-center p-md-3 pd-sm-3 mb-5">
+                  <TextField
+                     label="Email"
+                     sx={{ width: "20rem", marginBottom: 3 }}
+                     required
+                     type="text"
+                     // onChange={(e) => setName(e.target.value)}
+                  />
+                  <TextField
+                     label="Subject"
+                     sx={{ width: "20rem", marginBottom: 3 }}
+                     required
+                     type="text"
+                     // onChange={(e) => setName(e.target.value)}
+                  />
+                  <TextField
+                     label="Query"
+                     sx={{ width: "20rem", marginBottom: 3 }}
+                     multiline
+                     rows={3}
+                     required
+                     type="text"
+                     // onChange={(e) => setName(e.target.value)}
+                  />
+                  <Button
+                     variant="contained"
+                     type="submit"
+                     sx={{ margin: "auto" }}
+                  >
+                     Submit
+                  </Button>
                </form>
             </div>
             <div className="col-12 col-md-6 col-sm-12">
-               <div className="p-md-5 pd-sm-3">
+               <div className="p-md-3 pd-sm-3">
                   <div className="flex py-2">
                      <i className="bi bi-envelope-fill h4 text-primary" />
                      <span className="px-3 lead">spectrum@gmail.com</span>

@@ -37,13 +37,13 @@ function Photoshoots() {
          });
    };
 
-   const handleFilter = (e) => {
-      e.preventDefault();
+   const handleFilter = () => {
       let data = photoshoots.filter((d) => {
          return startDate <= d.date && d.date <= endDate;
       });
       setFilteredData(data);
    };
+
    useEffect(() => {
       setLoadingData(true);
       axios
@@ -62,10 +62,7 @@ function Photoshoots() {
    return (
       <div>
          <h1 className="display-4 text-center py-3">Photoshoots</h1>
-         <form
-            className="d-flex justify-content-end align-items-center p-3"
-            onSubmit={handleFilter}
-         >
+         <div className="d-flex justify-content-end align-items-center p-3">
             <TextField
                label="Start Date"
                type="date"
@@ -86,10 +83,10 @@ function Photoshoots() {
                onChange={(e) => setEndDate(e.target.value)}
                required
             />
-            <Button variant="contained" type="submit">
+            <Button variant="contained" onClick={handleFilter}>
                Filter
             </Button>
-         </form>
+         </div>
 
          {loadingData ? (
             <p className="text-center h4">Loading...</p>
@@ -140,6 +137,12 @@ function Photoshoots() {
                </table>
             </div>
          )}
+
+         <div className="text-center py-3">
+            <Button>
+               <i className="h3 bi-printer-fill" />
+            </Button>
+         </div>
 
          <MessageBox
             open={open}

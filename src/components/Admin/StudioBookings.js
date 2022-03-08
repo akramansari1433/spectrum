@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MessageBox from "../../utils/MessageBox";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 function StudioBookings() {
    const [bookings, setBookings] = useState([]);
@@ -15,6 +17,10 @@ function StudioBookings() {
       setOpen(false);
       window.location.reload(false);
    };
+
+   const [startDate, setStartDate] = useState();
+   const [endDate, setEndDate] = useState();
+   const [filteredData, setFilteredData] = useState([]);
 
    const handleDelete = (id) => {
       axios
@@ -31,6 +37,13 @@ function StudioBookings() {
          });
    };
 
+   const handleFilter = () => {
+      let data = bookings.filter((d) => {
+         return startDate <= d.date && d.date <= endDate;
+      });
+      setFilteredData(data);
+   };
+
    useEffect(() => {
       setLoadingData(true);
       axios
@@ -39,6 +52,7 @@ function StudioBookings() {
             if (res.data) {
                setLoadingData(false);
                setBookings(res.data);
+               setFilteredData(res.data);
             }
          })
          .catch((err) => {
@@ -48,6 +62,32 @@ function StudioBookings() {
    return (
       <div>
          <h1 className="display-4 text-center py-3">Bookings</h1>
+
+         <div className="d-flex justify-content-end align-items-center p-3">
+            <TextField
+               label="Start Date"
+               type="date"
+               sx={{ marginX: 1 }}
+               InputLabelProps={{
+                  shrink: true,
+               }}
+               onChange={(e) => setStartDate(e.target.value)}
+               required
+            />
+            <TextField
+               label="End Date"
+               type="date"
+               sx={{ marginX: 1 }}
+               InputLabelProps={{
+                  shrink: true,
+               }}
+               onChange={(e) => setEndDate(e.target.value)}
+               required
+            />
+            <Button variant="contained" onClick={handleFilter}>
+               Filter
+            </Button>
+         </div>
 
          {loadingData ? (
             <p className="text-center h4">Loading...</p>
@@ -66,7 +106,7 @@ function StudioBookings() {
                      </tr>
                   </thead>
                   <tbody>
-                     {bookings.map((b) => (
+                     {filteredData.map((b) => (
                         <tr key={b.bookingId}>
                            <td>{b.date}</td>
                            <td>{b.name}</td>
@@ -94,6 +134,11 @@ function StudioBookings() {
             </div>
          )}
 
+         <div className="text-center py-3">
+            <Button>
+               <i className="h3 bi-printer-fill" />
+            </Button>
+         </div>
          <MessageBox
             open={open}
             handleClose={handleClose}
