@@ -1,8 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MessageBox from "../../utils/MessageBox";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useReactToPrint } from "react-to-print";
+import ReportsStudio from "../../utils/ReportsStudio";
 
 function StudioBookings() {
    const [bookings, setBookings] = useState([]);
@@ -43,6 +45,11 @@ function StudioBookings() {
       });
       setFilteredData(data);
    };
+
+   const componentRef = useRef();
+   const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+   });
 
    useEffect(() => {
       setLoadingData(true);
@@ -135,9 +142,12 @@ function StudioBookings() {
          )}
 
          <div className="text-center py-3">
-            <Button>
+            <Button onClick={handlePrint}>
                <i className="h3 bi-printer-fill" />
             </Button>
+            <div style={{ display: "none" }}>
+               <ReportsStudio ref={componentRef} data={filteredData} />
+            </div>
          </div>
          <MessageBox
             open={open}

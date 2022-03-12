@@ -1,8 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MessageBox from "../../utils/MessageBox";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useReactToPrint } from "react-to-print";
+import ReportsPhotoshoot from "../../utils/ReportsPhotoshoot";
 
 function Photoshoots() {
    const [photoshoots, setPhotoshoots] = useState([]);
@@ -43,6 +45,11 @@ function Photoshoots() {
       });
       setFilteredData(data);
    };
+
+   const componentRef = useRef();
+   const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+   });
 
    useEffect(() => {
       setLoadingData(true);
@@ -139,9 +146,12 @@ function Photoshoots() {
          )}
 
          <div className="text-center py-3">
-            <Button>
+            <Button onClick={handlePrint}>
                <i className="h3 bi-printer-fill" />
             </Button>
+            <div style={{ display: "none" }}>
+               <ReportsPhotoshoot ref={componentRef} data={filteredData} />
+            </div>
          </div>
 
          <MessageBox
