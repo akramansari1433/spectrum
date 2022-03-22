@@ -1,6 +1,6 @@
 {
-   "name": "spectrum",
-   "homepage": "https://akramansari1433.github.io/spectrum",
+   "name": "spectrum-client",
+   "homepage": "https://akramansari1433.github.io/spectrum-client",
    "version": "0.1.0",
    "private": true,
    "dependencies": {

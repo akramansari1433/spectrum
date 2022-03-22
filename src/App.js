@@ -29,7 +29,7 @@ function App() {
          <Navbar isAdmin={isAdmin} setAdmin={setAdmin} />
          <Switch>
             <Route exact path="/" component={Cover} />
-            <Route path="/spectrum" component={Cover} />
+            <Route path="/spectrum-client" component={Cover} />
             <Route path="/porfolio/wedding" component={Wedding} />
             <Route path="/porfolio/prewedding" component={PreWedding} />
             <Route path="/porfolio/makeup" component={Makeup} />
