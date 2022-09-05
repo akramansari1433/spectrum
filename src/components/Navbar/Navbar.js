@@ -97,6 +97,11 @@ function Navbar({ isAdmin, setAdmin }) {
                   </Link>
                </li>
                <li className="nav-item">
+                  <Link className="nav-link text-white" to="/rent">
+                     Rent Equipments
+                  </Link>
+               </li>
+               <li className="nav-item">
                   <Link className="nav-link text-white" to="/feedback">
                      Feedback
                   </Link>

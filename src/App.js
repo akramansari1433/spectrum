@@ -20,6 +20,10 @@ import FashionPortrait from "./components/FashionPortrait/FashionPortrait";
 import BookPhotoshoot from "./components/BookPhotoshoot/BookPhotoshoot";
 import StudioBookings from "./components/Admin/StudioBookings";
 import Photoshoots from "./components/Admin/Photoshoots";
+import Rent from "./components/Rent/Rent";
+import Rentals from "./components/Admin/Rentals";
+import Products from "./components/Admin/Products";
+import AddProduct from "./components/Admin/AddProduct";
 
 function App() {
    const [isAdmin, setAdmin] = useState(window.localStorage.getItem("admin"));
@@ -42,6 +46,7 @@ function App() {
             />
             <Route path="/bookstudio" component={BookStudio} />
             <Route path="/bookphotoshoot" component={BookPhotoshoot} />
+            <Route path="/rent" component={Rent} />
             <Route path="/feedback" component={Feedback} />
             <Route path="/about" component={About} />
             <Route exact path="/admin">
@@ -58,6 +63,15 @@ function App() {
             </Route>
             <Route path="/admin/studiobookings">
                {isAdmin ? <StudioBookings /> : <Login setAdmin={setAdmin} />}
+            </Route>
+            <Route path="/admin/rentals">
+               {isAdmin ? <Rentals /> : <Login setAdmin={setAdmin} />}
+            </Route>
+            <Route path="/admin/products">
+               {isAdmin ? <Products /> : <Login setAdmin={setAdmin} />}
+            </Route>
+            <Route path="/admin/addProduct">
+               {isAdmin ? <AddProduct /> : <Login setAdmin={setAdmin} />}
             </Route>
             <Route path="/admin/feedbacks">
                {isAdmin ? <Feedbacks /> : <Login setAdmin={setAdmin} />}

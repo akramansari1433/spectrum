@@ -36,6 +36,16 @@ function Nav({ setAdmin }) {
                      </Link>
                   </li>
                   <li className="nav-item active">
+                     <Link className="nav-link h6" to="/admin/rentals">
+                        Rentals
+                     </Link>
+                  </li>
+                  <li className="nav-item active">
+                     <Link className="nav-link h6" to="/admin/products">
+                        Products
+                     </Link>
+                  </li>
+                  <li className="nav-item active">
                      <Link className="nav-link h6" to="/admin/feedbacks">
                         Feedbacks
                      </Link>

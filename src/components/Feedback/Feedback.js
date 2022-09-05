@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import MessageBox from "../../utils/MessageBox";
+import { Box, Typography } from "@mui/material";
 
 function Feedback() {
    const [message, setMessage] = useState();
@@ -53,8 +54,8 @@ function Feedback() {
    };
 
    return (
-      <div>
-         <h1 className="text-center display-4 py-3">Feedbacks</h1>
+      <Box p={3} textAlign="center">
+         <Typography variant="h2">Book Photoshoot</Typography>
          <div
             id="carouselExampleControls"
             className="carousel slide p-2"
@@ -109,28 +110,31 @@ function Feedback() {
             </a>
          </div>
 
-         <hr className="w-75" />
+         <hr style={{ width: "75%" }} />
 
          <form
-            className="text-center py-3 mt-3 border-dark mx-md-5 mx-3"
+            style={{ maxWidth: 350, margin: "auto" }}
             onSubmit={handleSubmit}
          >
-            <h2 className=" pb-3">Give your feedback</h2>
+            <Typography variant="h5" pb={2}>
+               Give your feedback
+            </Typography>
             <TextField
                label="Message"
                multiline
                maxRows={5}
-               sx={{ width: "20rem", marginBottom: 3 }}
+               sx={{ marginBottom: 3 }}
                onChange={(e) => setMessage(e.target.value)}
                required
+               fullWidth
             />
             <br />
             <TextField
                label="Name"
                variant="outlined"
-               sx={{ width: "20rem" }}
                onChange={(e) => setName(e.target.value)}
                required
+               fullWidth
             />
             <br />
             <Button
@@ -147,7 +151,7 @@ function Feedback() {
             </Button>
          </form>
 
-         <hr className="w-75" />
+         <hr style={{ width: "75%" }} />
 
          <MessageBox
             open={open}
@@ -155,7 +159,7 @@ function Feedback() {
             response={response}
             message="Thank you for your valuable feedback."
          />
-      </div>
+      </Box>
    );
 }
 

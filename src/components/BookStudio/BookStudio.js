@@ -4,6 +4,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import MessageBox from "../../utils/MessageBox";
+import { Box, Typography } from "@mui/material";
 
 function BookStudio() {
    let today = new Date().toISOString().split("T")[0];
@@ -106,39 +107,41 @@ function BookStudio() {
    };
 
    return (
-      <div className="px-md-5 px-3">
-         <h1 className="text-center display-4 py-3">Book studio</h1>
+      <Box p={3} textAlign="center">
+         <Typography variant="h2">Book Studio</Typography>
 
-         <hr className="w-75" />
+         <hr style={{ width: "75%" }} />
 
-         <form
-            className="py-3 d-flex flex-column align-items-center"
-            onSubmit={handleSumit}
-         >
-            <h2 className="py-3">Enter details:</h2>
+         <form style={{ maxWidth: 350, margin: "auto" }} onSubmit={handleSumit}>
+            <Typography variant="h5" pb={2}>
+               Enter details:
+            </Typography>
 
             <TextField
                label="Name"
-               sx={{ width: "20rem", marginBottom: 3 }}
+               sx={{ marginBottom: 3 }}
                required
                type="text"
+               fullWidth
                onChange={(e) => setName(e.target.value)}
             />
 
             <TextField
                label="Email"
-               sx={{ width: "20rem", marginBottom: 3 }}
+               sx={{ marginBottom: 3 }}
                required
                type="email"
+               fullWidth
                onChange={(e) => setEmail(e.target.value)}
             />
 
             <TextField
                label="Phone"
                InputProps={{ inputProps: { minLength: 10, maxLength: 10 } }}
-               sx={{ width: "20rem", marginBottom: 3 }}
+               sx={{ marginBottom: 3 }}
                type="tel"
                required
+               fullWidth
                onKeyPress={(e) => {
                   if (!/[0-9]/.test(e.key)) {
                      e.preventDefault();
@@ -150,13 +153,14 @@ function BookStudio() {
             <TextField
                label="Date"
                type="date"
-               sx={{ width: "20rem", marginBottom: 3 }}
+               sx={{ marginBottom: 3 }}
                InputProps={{ inputProps: { min: today } }}
                InputLabelProps={{
                   shrink: true,
                }}
-               onChange={(e) => setDate(e.target.value)}
                required
+               fullWidth
+               onChange={(e) => setDate(e.target.value)}
             />
 
             <Button variant="contained" type="submit" color="primary">
@@ -167,10 +171,10 @@ function BookStudio() {
                )}
             </Button>
 
-            <p className="text-danger">{error}</p>
+            <Typography color="red">{error}</Typography>
          </form>
 
-         <hr className="w-75" />
+         <hr style={{ width: "75%" }} />
 
          <MessageBox
             open={open}
@@ -178,7 +182,7 @@ function BookStudio() {
             response={response}
             message="Thank you for choosing us."
          />
-      </div>
+      </Box>
    );
 }
 

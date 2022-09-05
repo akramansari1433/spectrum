@@ -6,6 +6,7 @@
    "dependencies": {
       "@emotion/react": "^11.7.1",
       "@emotion/styled": "^11.6.0",
+      "@mui/icons-material": "^5.8.4",
       "@mui/material": "^5.4.1",
       "@testing-library/jest-dom": "^5.14.1",
       "@testing-library/react": "^11.2.7",
@@ -49,5 +50,5 @@
          "last 1 safari version"
       ]
    },
-   "proxy": "https://asia-south1-spectrum-42da3.cloudfunctions.net/api"
+   "proxy": "http://localhost:5001/spectrum-42da3/asia-south1/api"
 }
