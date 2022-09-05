@@ -57,7 +57,7 @@ function About() {
                      type="submit"
                      sx={{ margin: "auto" }}
                   >
-                     Add
+                     Submit
                   </Button>
                </form>
             </div>
